@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometry of Limits: 1/x → 0 as x → ∞</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        input[type="range"] {
+            width: 200px;
+            height: 8px;
+            border-radius: 5px;
+            background: #ddd;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        input[type="range"]:hover {
+            opacity: 1;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+        }
+        .value-display {
+            font-size: 1.1em;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        #plot {
+            margin: 20px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .explanation {
+            background: #ecf0f1;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #3498db;
+        }
+        .math {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            text-align: center;
+        }
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Geometry Behind Limits</h1>
+        <p class="subtitle">Understanding lim(x→∞) 1/x = 0 through the ε-M definition</p>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="epsilon">Epsilon (ε)</label>
+                <input type="range" id="epsilon" min="0.01" max="1" step="0.01" value="0.2">
+                <div class="value-display" id="epsilonValue">0.2</div>
+            </div>
+            <div class="control-group">
+                <label for="xRange">X-axis Range</label>
+                <input type="range" id="xRange" min="10" max="100" step="5" value="50">
+                <div class="value-display" id="xRangeValue">50</div>
+            </div>
+        </div>
+
+        <div id="plot"></div>
+
+        <div class="explanation">
+            <h3>The Geometric Argument:</h3>
+            <p>The limit <strong>lim(x→∞) 1/x = 0</strong> means that as x gets arbitrarily large, 1/x gets arbitrarily close to 0.</p>
+            
+            <div class="math">
+                For any ε > 0, we need to find M such that if x > M, then |1/x - 0| < ε
+            </div>
+            
+            <p>Since x > 0 for large x, we have |1/x - 0| = 1/x. So we need:</p>
+            <div class="math">1/x < ε</div>
+            
+            <p>Solving for x: <span class="highlight">x > 1/ε</span></p>
+            
+            <p>Therefore, we can choose <strong>M = 1/ε</strong>. The red dashed line shows this threshold value.</p>
+            
+            <p><strong>Visual Interpretation:</strong></p>
+            <ul>
+                <li>The <span style="color: #1f77b4; font-weight: bold;">blue curve</span> shows f(x) = 1/x</li>
+                <li>The <span style="color: #d62728; font-weight: bold;">red horizontal lines</span> show the ε-neighborhood around y = 0</li>
+                <li>The <span style="color: #d62728; font-weight: bold;">red vertical line</span> shows M = 1/ε</li>
+                <li>For all x > M, the function stays within the ε-neighborhood of 0</li>
+            </ul>
+            
+            <p>Try adjusting ε to see how the required M = 1/ε changes!</p>
+        </div>
+    </div>
+
+    <script>
+        function updatePlot() {
+            const epsilon = parseFloat(document.getElementById('epsilon').value);
+            const xRange = parseFloat(document.getElementById('xRange').value);
+            const M = 1 / epsilon;
+            
+            // Update displays
+            document.getElementById('epsilonValue').textContent = epsilon;
+            document.getElementById('xRangeValue').textContent = xRange;
+            
+            // Generate data for 1/x
+            const x = [];
+            const y = [];
+            for (let i = 0.1; i <= xRange; i += 0.1) {
+                x.push(i);
+                y.push(1/i);
+            }
+            
+            // Create traces
+            const traces = [
+                // Main function 1/x
+                {
+                    x: x,
+                    y: y,
+                    type: 'scatter',
+                    mode: 'lines',
+                    name: 'f(x) = 1/x',
+                    line: { color: '#1f77b4', width: 3 }
+                },
+                // Epsilon upper bound
+                {
+                    x: [0, xRange],
+                    y: [epsilon, epsilon],
+                    type: 'scatter',
+                    mode: 'lines',
+                    name: `y = ε = ${epsilon}`,
+                    line: { color: '#d62728', width: 2, dash: 'dash' }
+                },
+                // Epsilon lower bound  
+                {
+                    x: [0, xRange],
+                    y: [-epsilon, -epsilon],
+                    type: 'scatter',
+                    mode: 'lines',
+                    name: `y = -ε = ${-epsilon}`,
+                    line: { color: '#d62728', width: 2, dash: 'dash' }
+                },
+                // M = 1/epsilon vertical line
+                {
+                    x: [M, M],
+                    y: [0, Math.max(1, epsilon * 2)],
+                    type: 'scatter',
+                    mode: 'lines',
+                    name: `M = 1/ε = ${M.toFixed(2)}`,
+                    line: { color: '#d62728', width: 3, dash: 'dashdot' }
+                }
+            ];
+            
+            // Add shaded region for x > M
+            if (M < xRange) {
+                const xShade = [];
+                const yShade = [];
+                for (let i = M; i <= xRange; i += 0.1) {
+                    xShade.push(i);
+                    yShade.push(1/i);
+                }
+                
+                traces.push({
+                    x: xShade.concat(xShade.slice().reverse()),
+                    y: yShade.concat(new Array(yShade.length).fill(0)),
+                    fill: 'toself',
+                    fillcolor: 'rgba(46, 204, 113, 0.2)',
+                    line: { color: 'rgba(46, 204, 113, 0)' },
+                    name: 'x > M region',
+                    hoverinfo: 'skip'
+                });
+            }
+            
+            const layout = {
+                title: {
+                    text: `Geometric Proof: For x > M = 1/ε = ${M.toFixed(2)}, we have |1/x| < ε = ${epsilon}`,
+                    font: { size: 16, color: '#2c3e50' }
+                },
+                xaxis: {
+                    title: 'x',
+                    range: [0, xRange],
+                    gridcolor: '#ecf0f1',
+                    zerolinecolor: '#bdc3c7'
+                },
+                yaxis: {
+                    title: 'f(x) = 1/x',
+                    range: [-epsilon * 1.5, Math.max(1, epsilon * 3)],
+                    gridcolor: '#ecf0f1',
+                    zerolinecolor: '#bdc3c7'
+                },
+                plot_bgcolor: 'white',
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                legend: {
+                    x: 0.7,
+                    y: 0.95,
+                    bgcolor: 'rgba(255,255,255,0.8)',
+                    bordercolor: '#bdc3c7',
+                    borderwidth: 1
+                },
+                annotations: [
+                    {
+                        x: M + (xRange - M) / 3,
+                        y: epsilon / 2,
+                        text: `For all x > M,<br>|1/x| < ε`,
+                        showarrow: true,
+                        arrowhead: 2,
+                        arrowcolor: '#27ae60',
+                        font: { color: '#27ae60', size: 12 },
+                        bgcolor: 'rgba(255,255,255,0.8)',
+                        bordercolor: '#27ae60',
+                        borderwidth: 1
+                    }
+                ]
+            };
+            
+            Plotly.newPlot('plot', traces, layout, {responsive: true});
+        }
+        
+        // Event listeners
+        document.getElementById('epsilon').addEventListener('input', updatePlot);
+        document.getElementById('xRange').addEventListener('input', updatePlot);
+        
+        // Initial plot
+        updatePlot();
+    </script>
+</body>
+</html>
