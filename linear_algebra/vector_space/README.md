@@ -47,7 +47,7 @@ $$\mathbb{C}$$
 
 ---
 
-## <img src="badges/sec1.svg" alt="1. What is a Vector Space?" height="40"/>
+## 1. What is a Vector Space?"
 
 A **vector space** is a set equipped with two operations:
 
@@ -167,7 +167,7 @@ This is an infinite-dimensional vector space.
 
 ---
 
-4. Important Insight"
+## 4. Important Insight"
 
 A vector space is **not just** $\mathbb{R}^n$.
 
@@ -187,7 +187,7 @@ Vectors do not have to be arrows. They can be:
 
 ---
 
-5. Why This Matters
+## 5. Why This Matters
 
 Vector spaces allow us to define:
 
@@ -207,7 +207,7 @@ Signal processing studies vector spaces of functions.
 
 ---
 
-6. Summary
+## 6. Summary
 
 A vector space over a field $F$ is a set $V$ equipped with:
 
