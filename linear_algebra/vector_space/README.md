@@ -23,19 +23,19 @@ In mathematics, a set is a collection of elements defined within a formal system
 Examples:
 
 - The set of natural numbers  
-  $$
+$$
   \mathbb{N} = \{1,2,3,4,5,\ldots\}
-  $$
+$$
 
 - The set of real numbers  
-  $$
+$$
   \mathbb{R}
-  $$
+$$
 
 - The set of complex numbers  
-  $$
+$$
   \mathbb{C}
-  $$
+$$
 
 ---
 
