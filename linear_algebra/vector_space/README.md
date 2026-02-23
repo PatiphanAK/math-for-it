@@ -167,7 +167,7 @@ This is an infinite-dimensional vector space.
 
 ---
 
-## 4. Important Insight"
+## 4. Important Insight
 
 A vector space is **not just** $\mathbb{R}^n$.
 
