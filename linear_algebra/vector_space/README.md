@@ -71,8 +71,8 @@ $$\cdot : F \times V \to V$$
 and the following axioms hold.
 
 ---
-
-# 2. The Axioms of a Vector Space
+<details>
+    <summary># 2. The Axioms of a Vector Space</summary>
 
 For all $u, v, w \in V$ and all scalars $a, b \in F$:
 
@@ -113,7 +113,7 @@ $$a(u + v) = au + av$$
 $$(a + b)v = av + bv$$
 
 If all these properties hold, then $V$ is a vector space.
-
+</details>
 ---
 
 # 3. Standard Examples
