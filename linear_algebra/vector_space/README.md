@@ -1,14 +1,13 @@
 # Vector Spaces
 
 Vector spaces are one of the most fundamental structures in mathematics.
-
 They appear in:
 
-- Linear Algebra  
-- Machine Learning  
-- Physics  
-- Computer Graphics  
-- Signal Processing  
+- Linear Algebra
+- Machine Learning
+- Physics
+- Computer Graphics
+- Signal Processing
 
 Understanding vector spaces clearly makes everything in linear algebra much easier.
 
@@ -22,37 +21,29 @@ In mathematics, a set is a collection of elements defined within a formal system
 
 Examples:
 
-- The set of natural numbers  
-$$
-  \mathbb{N} = \{1,2,3,4,5,\ldots\}
-$$
+- The set of natural numbers
 
-- The set of real numbers  
-$$
-  \mathbb{R}
-$$
+$$\mathbb{N} = \{1,2,3,4,5,\ldots\}$$
 
-- The set of complex numbers  
-$$
-  \mathbb{C}
-$$
+- The set of real numbers
+
+$$\mathbb{R}$$
+
+- The set of complex numbers
+
+$$\mathbb{C}$$
 
 ---
 
-<div style="border:1px solid #999; padding:10px; border-radius:8px;">
-<strong>⚠ Imaginary Numbers</strong><br>
-The complex number system introduces the imaginary unit
-<br><br>
-$$
-i = \sqrt{-1}
-$$
-<br>
-so that
-<br><br>
-$$
-\mathbb{C} = \{ a + bi \mid a,b \in \mathbb{R} \}
-$$
-</div>
+> **⚠️ Imaginary Numbers**
+>
+> The complex number system introduces the imaginary unit
+>
+> $$i = \sqrt{-1}$$
+>
+> so that
+>
+> $$\mathbb{C} = \{ a + bi \mid a, b \in \mathbb{R} \}$$
 
 ---
 
@@ -60,8 +51,8 @@ $$
 
 A **vector space** is a set equipped with two operations:
 
-1. Vector addition  
-2. Scalar multiplication  
+1. Vector addition
+2. Scalar multiplication
 
 These operations must satisfy specific rules (called axioms).
 
@@ -73,13 +64,9 @@ Let $V$ be a set and let $F$ be a **field** (such as $\mathbb{R}$ or $\mathbb{C}
 
 We say that $V$ is a **vector space over $F$** if:
 
-$$
-+ : V \times V \to V
-$$
+$$+ : V \times V \to V$$
 
-$$
-\cdot : F \times V \to V
-$$
+$$\cdot : F \times V \to V$$
 
 and the following axioms hold.
 
@@ -90,50 +77,40 @@ and the following axioms hold.
 For all $u, v, w \in V$ and all scalars $a, b \in F$:
 
 ### (1) Associativity of Addition
-$$
-(u + v) + w = u + (v + w)
-$$
+
+$$(u + v) + w = u + (v + w)$$
 
 ### (2) Commutativity of Addition
-$$
-u + v = v + u
-$$
+
+$$u + v = v + u$$
 
 ### (3) Existence of Zero Vector
 
 There exists a vector $\mathbf{0} \in V$ such that:
 
-$$
-v + \mathbf{0} = v
-$$
+$$v + \mathbf{0} = v$$
 
 ### (4) Existence of Additive Inverse
 
 For each $v \in V$, there exists $-v$ such that:
 
-$$
-v + (-v) = \mathbf{0}
-$$
+$$v + (-v) = \mathbf{0}$$
 
 ### (5) Compatibility of Scalar Multiplication
-$$
-a(bv) = (ab)v
-$$
+
+$$a(bv) = (ab)v$$
 
 ### (6) Identity Element of Scalar Multiplication
-$$
-1 \cdot v = v
-$$
+
+$$1 \cdot v = v$$
 
 ### (7) Distributivity Over Vector Addition
-$$
-a(u + v) = au + av
-$$
+
+$$a(u + v) = au + av$$
 
 ### (8) Distributivity Over Scalar Addition
-$$
-(a + b)v = av + bv
-$$
+
+$$(a + b)v = av + bv$$
 
 If all these properties hold, then $V$ is a vector space.
 
@@ -143,25 +120,15 @@ If all these properties hold, then $V$ is a vector space.
 
 ## Example 1: $\mathbb{R}^n$
 
-$$
-\mathbb{R}^n = \{ (x_1, x_2, \ldots, x_n) \mid x_i \in \mathbb{R} \}
-$$
+$$\mathbb{R}^n = \{ (x_1, x_2, \ldots, x_n) \mid x_i \in \mathbb{R} \}$$
 
 **Addition**
 
-$$
-(x_1, \ldots, x_n) + (y_1, \ldots, y_n)
-=
-(x_1 + y_1, \ldots, x_n + y_n)
-$$
+$$(x_1, \ldots, x_n) + (y_1, \ldots, y_n) = (x_1 + y_1, \ldots, x_n + y_n)$$
 
 **Scalar multiplication**
 
-$$
-a(x_1, \ldots, x_n)
-=
-(ax_1, \ldots, ax_n)
-$$
+$$a(x_1, \ldots, x_n) = (ax_1, \ldots, ax_n)$$
 
 This is the most familiar finite-dimensional vector space.
 
@@ -169,23 +136,13 @@ This is the most familiar finite-dimensional vector space.
 
 ## Example 2: Polynomial Space
 
-Let
-
-$$
-P_n(\mathbb{R})
-$$
-
-be the set of all polynomials of degree $\leq n$.
+Let $P_n(\mathbb{R})$ be the set of all polynomials of degree $\leq n$.
 
 Example:
 
-$$
-p(x) = a_0 + a_1 x + a_2 x^2
-$$
+$$p(x) = a_0 + a_1 x + a_2 x^2$$
 
-Addition and scalar multiplication are defined coefficient-wise.
-
-This is also a vector space.
+Addition and scalar multiplication are defined coefficient-wise. This is also a vector space.
 
 ---
 
@@ -193,19 +150,13 @@ This is also a vector space.
 
 Let
 
-$$
-V = \{ f : \mathbb{R} \to \mathbb{R} \}
-$$
+$$V = \{ f : \mathbb{R} \to \mathbb{R} \}$$
 
 Define:
 
-$$
-(f + g)(x) = f(x) + g(x)
-$$
+$$(f + g)(x) = f(x) + g(x)$$
 
-$$
-(af)(x) = a f(x)
-$$
+$$(af)(x) = a \cdot f(x)$$
 
 This is an infinite-dimensional vector space.
 
@@ -221,15 +172,13 @@ It is any structure where:
 - Scalar multiplication is defined
 - The axioms are satisfied
 
-Vectors do not have to be arrows.
+Vectors do not have to be arrows. They can be:
 
-They can be:
-
-- Polynomials  
-- Functions  
-- Signals  
-- Matrices  
-- Feature representations in neural networks  
+- Polynomials
+- Functions
+- Signals
+- Matrices
+- Feature representations in neural networks
 
 ---
 
@@ -237,18 +186,18 @@ They can be:
 
 Vector spaces allow us to define:
 
-- Linear combinations  
-- Basis  
-- Dimension  
-- Linear transformations  
-- Eigenvalues  
-- Orthogonality  
-- Projection  
+- Linear combinations
+- Basis
+- Dimension
+- Linear transformations
+- Eigenvalues
+- Orthogonality
+- Projection
 
 All of linear algebra is built on this structure.
 
-Machine learning models operate in vector spaces.  
-Neural network embeddings live in vector spaces.  
+Machine learning models operate in vector spaces.
+Neural network embeddings live in vector spaces.
 Signal processing studies vector spaces of functions.
 
 ---
@@ -263,10 +212,6 @@ A vector space over a field $F$ is a set $V$ equipped with:
 
 We often denote this structure as:
 
-$$
-(V, +, \cdot)
-$$
+$$(V, +, \cdot)$$
 
-If the axioms hold, you have a vector space.
-
-Everything else in linear algebra builds from here.
+If the axioms hold, you have a vector space. Everything else in linear algebra builds from here.
