@@ -13,7 +13,7 @@ Understanding vector spaces clearly makes everything in linear algebra much easi
 
 ---
 
-# 0. A Quick Review of Sets
+## 0. A Quick Review of Sets
 
 Before defining vector spaces, we recall the idea of a **set**.
 
@@ -47,7 +47,7 @@ $$\mathbb{C}$$
 
 ---
 
-# 1. What is a Vector Space?
+## <img src="badges/sec1.svg" alt="1. What is a Vector Space?" height="40"/>
 
 A **vector space** is a set equipped with two operations:
 
@@ -58,7 +58,7 @@ These operations must satisfy specific rules (called axioms).
 
 ---
 
-## Formal Definition
+### Formal Definition
 
 Let $V$ be a set and let $F$ be a **field** (such as $\mathbb{R}$ or $\mathbb{C}$).
 
@@ -71,8 +71,11 @@ $$\cdot : F \times V \to V$$
 and the following axioms hold.
 
 ---
+
+## 2. The Axioms of a Vector Space
+
 <details>
-    <summary># 2. The Axioms of a Vector Space</summary>
+<summary>Click to expand all 8 axioms</summary>
 
 For all $u, v, w \in V$ and all scalars $a, b \in F$:
 
@@ -113,12 +116,14 @@ $$a(u + v) = au + av$$
 $$(a + b)v = av + bv$$
 
 If all these properties hold, then $V$ is a vector space.
+
 </details>
+
 ---
 
-# 3. Standard Examples
+Standard Examples
 
-## Example 1: $\mathbb{R}^n$
+### Example 1: $\mathbb{R}^n$
 
 $$\mathbb{R}^n = \{ (x_1, x_2, \ldots, x_n) \mid x_i \in \mathbb{R} \}$$
 
@@ -134,7 +139,7 @@ This is the most familiar finite-dimensional vector space.
 
 ---
 
-## Example 2: Polynomial Space
+### Example 2: Polynomial Space
 
 Let $P_n(\mathbb{R})$ be the set of all polynomials of degree $\leq n$.
 
@@ -146,7 +151,7 @@ Addition and scalar multiplication are defined coefficient-wise. This is also a 
 
 ---
 
-## Example 3: Function Space
+### Example 3: Function Space
 
 Let
 
@@ -162,7 +167,7 @@ This is an infinite-dimensional vector space.
 
 ---
 
-# 4. Important Insight
+4. Important Insight"
 
 A vector space is **not just** $\mathbb{R}^n$.
 
@@ -182,7 +187,7 @@ Vectors do not have to be arrows. They can be:
 
 ---
 
-# 5. Why This Matters
+5. Why This Matters
 
 Vector spaces allow us to define:
 
@@ -202,7 +207,7 @@ Signal processing studies vector spaces of functions.
 
 ---
 
-# 6. Summary
+6. Summary
 
 A vector space over a field $F$ is a set $V$ equipped with:
 
